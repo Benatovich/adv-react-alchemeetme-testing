@@ -1,3 +1,6 @@
+// tests for Profile
+// test for name, motto, interests heading, avatar, header image, list of user likes
+// STRETCH: write tests to check that 'user' object has id, name, avatar, header, likes, motto, color
 
 const user = {
   id: 1,
