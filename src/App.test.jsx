@@ -18,7 +18,7 @@ const user = {
     color: 'crimson',
   }
 
-describe('First test', () => {
+describe('Header tests', () => {
     it('Should render the header', () => {
         render(
             <MemoryRouter>
@@ -30,5 +30,17 @@ describe('First test', () => {
 
         expect(img.src).toEqual('http://localhost/meet.png');
     });
+
+    it('should render the profile name', () => {
+        render(
+            <MemoryRouter>
+                <Header user = {user}/>
+            </MemoryRouter>
+        );
+
+        const name = screen.getByText('Vonta');
+
+        expect(name.textContent).toBe('Vonta');
+    })
 
 });
