@@ -17,7 +17,7 @@ const user = {
   color: 'crimson',
 }
 
-it('Should render the user profile, checking the user name', () => {
+it('Should render the user profile', () => {
   render(
     <MemoryRouter>
       <Home user={user} />
@@ -25,6 +25,18 @@ it('Should render the user profile, checking the user name', () => {
   );
 
   const name = screen.getByText('Vonta');
+  const motto = screen.getByLabelText('motto');
+  const interestsHeading = screen.getByText(/interests/i);
+  const avatar = screen.getByAltText(/avatar/i);
+  const headerImg = screen.getByAltText(/header/i);
+  // const likeList = screen.getByText(/tower/i);
+  // console.log('likeList?!', likeList, likeList.textContent);
+  screen.getByText(/tower/i);
 
   expect(name.textContent).toBe('Vonta');
+  expect(motto.textContent).toBe('Res Non Verba');
+  expect(interestsHeading.textContent).toBe('Interests');
+  expect(avatar.alt).toBe('avatar');
+  expect(headerImg.alt).toBe('header');
+  // expect(likeList).toBe('tower defense');
 })
