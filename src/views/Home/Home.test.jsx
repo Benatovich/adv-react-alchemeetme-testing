@@ -1,3 +1,10 @@
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import Home from './Home';
+
+// tests for Profile
+// test for name, motto, interests heading, avatar, header image, list of user likes
+// STRETCH: write tests to check that 'user' object has id, name, avatar, header, likes, motto, color
 
 const user = {
   id: 1,
@@ -10,6 +17,26 @@ const user = {
   color: 'crimson',
 }
 
-test('Should render the user profile', () => {
+it('Should render the user profile', () => {
+  render(
+    <MemoryRouter>
+      <Home user={user} />
+    </MemoryRouter>
+  );
 
+  const name = screen.getByText('Vonta');
+  const motto = screen.getByLabelText('motto');
+  const interestsHeading = screen.getByText(/interests/i);
+  const avatar = screen.getByAltText(/avatar/i);
+  const headerImg = screen.getByAltText(/header/i);
+  // const likeList = screen.getByText(/tower/i);
+  // console.log('likeList?!', likeList, likeList.textContent);
+  screen.getByText(/tower/i);
+
+  expect(name.textContent).toBe('Vonta');
+  expect(motto.textContent).toBe('Res Non Verba');
+  expect(interestsHeading.textContent).toBe('Interests');
+  expect(avatar.alt).toBe('avatar');
+  expect(headerImg.alt).toBe('header');
+  // expect(likeList).toBe('tower defense');
 })
