@@ -19,7 +19,7 @@ const user = {
   }
 
 describe('Header tests', () => {
-    it('Should render the header', () => {
+    it('Should render the header, checking the image', () => {
         render(
             <MemoryRouter>
                 <App />
@@ -42,5 +42,7 @@ describe('Header tests', () => {
 
         expect(name.textContent).toBe('Vonta');
     })
+
+    // it('confirms the background color')
 
 });
