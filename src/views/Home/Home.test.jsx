@@ -1,3 +1,7 @@
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import Home from './Home';
+
 // tests for Profile
 // test for name, motto, interests heading, avatar, header image, list of user likes
 // STRETCH: write tests to check that 'user' object has id, name, avatar, header, likes, motto, color
@@ -13,6 +17,14 @@ const user = {
   color: 'crimson',
 }
 
-test('Should render the user profile', () => {
+it('Should render the user profile, checking the user name', () => {
+  render(
+    <MemoryRouter>
+      <Home user={user} />
+    </MemoryRouter>
+  );
 
+  const name = screen.getByText('Vonta');
+
+  expect(name.textContent).toBe('Vonta');
 })
